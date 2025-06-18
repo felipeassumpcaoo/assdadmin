@@ -1,0 +1,28 @@
+# Dependências (Composer)
+vendor/
+
+# Arquivo de ambiente
+.env
+config.php
+
+# Diretórios de cache ou temporários
+.cache/
+tmp/
+*.log
+
+# IDEs e editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de build
+node_modules/
+dist/
+
+# Uploads (se não quiser versionar arquivos enviados por usuários)
+uploads/
