@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*page-users.php*/
+
+th{
+   font-family: "IBM Plex Sans", sans-serif;
+}
+
+td{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+}
+
+
+.btn-primary{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    color: #F0F2F2;
+    background-color: #0082A5;
+    font-family: "IBM Plex Sans", sans-serif; 
+    font-weight: 700;
+}
+
+.btn-primary:hover{
+    background-color: #FF4500;
+    border:solid 1px #FF4500;
+}
+
+
+/*page-useredit.php*/
+
+h1{
+ font-family: "IBM Plex Sans", sans-serif;   
+}
+
+.container-center{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.form-label{
+    font-family: "IBM Plex Sans", sans-serif;  
+    font-weight: 500;
+}
+
+input [type=text]{
+    font-family: "IBM Plex Sans", sans-serif;  
+}

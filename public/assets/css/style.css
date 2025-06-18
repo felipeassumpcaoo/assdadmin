@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+  body {
+    margin: 0;
+    padding: 30px;
+    box-sizing: border-box;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+
+.btn-person{
+    background-color: orangered !important;
+    margin: 5px;
+}
+
+.btn-person:hover{
+    background-color: rgb(234, 28, 1) !important;
+    color: #fff;
+    font-weight: 600;
+}
+
+.item-x{
+    background-color: blueviolet;
+}
+

@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.area{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.area-info{
+ display: flex;
+ justify-content: start;
+ align-items: center;
+  
+}
+
+.area-info h2{
+    text-transform: capitalize;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    
+}
+
+
+hr {
+  border: none;          /* remove a borda padrão */
+  border-top: 2px solid #151515;
+}
+
+.resume{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:80px;
+    
+    
+}
+
+
+.resume h6{
+ background-color: #dcdcdc;
+ padding: 20px;
+ border-radius: 8px;
+ font-family: "IBM Plex Sans", sans-serif;
+color: orangered;
+font-weight: 700;
+}
+
+
+.resume strong{
+    color: orangered;
+     font-family: "IBM Plex Sans", sans-serif;
+}
+.resume h5{
+     font-family: "IBM Plex Sans", sans-serif;
+     color: #151515;
+     font-weight: 500;
+}
+
+
+
+
+.btn-add-register{
+  background-color:#0082A5;
+  color: #fff;                /* Texto branco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: "IBM Plex Sans", sans-serif;
+  margin-left:8px;
+  
+}
+
+.btn-add-register:hover{
+      background-color: #0082A5;
+      color: #cccccc;
+}
+
+.btn-add-register a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.data-extract{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+   padding-top:80px;
+   padding-bottom: 50px;
+   
+}
+
+#mes-select,
+#ano-select
+{
+  border: 1px solid #151515;
+  border-radius: 8px;        /* cantos arredondados */
+  padding: 8px;              /* espaçamento interno */
+  font-size: 18px;   
+  font-family: "IBM Plex Sans", sans-serif;  
+  font-weight: 500;      /* tamanho da fonte */
+}
+
+
+
+/* Tabela com extrato mensal*/
+
+
+.extract{
+   width: 70%;
+
+    
+}
+
+
+.extract thead  {
+  background-color:orangered;
+  color: white;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+
+}
+
+.extract th{
+    color: #FFFFFF;
+    border: 1px solid #ffffffc6;
+    padding: 10px;
+    text-align: left;
+    font-weight: 400;
+}
+
+/*td = coluna*/
+
+.extract td{
+    border: 1px solid #FFFFFF;
+    padding: 10px;
+    text-align: left;
+    font-family: "IBM Plex Sans", sans-serif;
+    color:#151515;
+    font-weight: 400;
+}
+
+/*Conteudo da coluna*/
+.extract tbody{
+    background-color: #d5d5d5;
+}
+
+tbody tr:hover{
+    background-color: rgb(191, 188, 188);
+}
+
+
+
+
+
