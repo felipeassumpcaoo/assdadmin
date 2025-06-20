@@ -5,27 +5,79 @@ use app\models\Validation;
 use app\models\Accounts;
 use app\models\Auth;
 
-$historical = new Historical;
-$validation = new Validation;
 
-
+// Verifica autenticação
 Auth::checkToken();
 $currentUser = Auth::user();
 
-// Buscar a conta do usuário logado
-$accounts = new Accounts();
-$accountsData = $accounts->find('id_usuario', $currentUser->id);
+//  Validação dos dados recebidos via POST
+$validator = new Validation();
+$values = $validator->validate($_POST);
+
+//  Verificações básicas de tipo e valor
+$type = $values->tipo;
+$amount = $values->valor;
+
+if (!in_array($type, ['0', '1'])) {
+    echo "Tipo inválido.";
+    return;
+}
+
+if (!preg_match('/^[0-9.,]+$/', $amount)) {
+    echo "Valor inválido.";
+    return;
+}
+
+//  Converte o valor para float
+$values->valor = floatval(str_replace(',', '.', $amount));
+$currentValue = $values->valor;
+
+// Busca o lançamento atual para comparar valores antigos
+$registerUpdate = new Historical();
+$search = $registerUpdate->find('id', $values->id);
+
+if (!$search) {
+    echo "Lançamento não encontrado!";
+    return;
+}
+
+// 6. Atualiza o lançamento com os novos dados
+$result = $registerUpdate->update($values, ['id' => $values->id]);
+
+// 7. Busca a conta vinculada ao usuário logado
+$accountsModel = new Accounts();
+$account = $accountsModel->find('id_usuario', $currentUser->id);
+
+if (!$account) {
+    echo "Conta não encontrada!";
+    return;
+}
 
 
-$validate = $validation->validate($_POST);
 
-$updateRecord = $historical->update($validate, ['id' => $validate->id]);
-
-
-
-
-if ($updateRecord) {
-    header('location:/cashflow');
+// Remove o valor antigo
+if ($search->tipo == '0') {
+    // Se antes era entrada, remove do saldo
+    $account->saldo -= $search->valor;
 } else {
-    header('location:/cashflow');
+    // Se antes era saída, adiciona de volta ao saldo
+    $account->saldo += $search->valor;
+}
+
+// Aplica o novo valor
+if ($values->tipo == '0') {
+    // Nova entrada
+    $account->saldo += $values->valor;
+} else {
+    // Nova saída
+    $account->saldo -= $values->valor;
+}
+
+// 9. Atualiza o saldo da conta no banco
+$accountsModel->update($account, ['id' => $account->id]);
+
+// 10. Redireciona para a tela principal após sucesso
+if ($result) {
+    header('Location: /cashflow');
+    exit;
 }
