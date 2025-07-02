@@ -41,10 +41,10 @@ if (!$search) {
     return;
 }
 
-// 6. Atualiza o lançamento com os novos dados
+//  Atualiza o lançamento com os novos dados
 $result = $registerUpdate->update($values, ['id' => $values->id]);
 
-// 7. Busca a conta vinculada ao usuário logado
+//  Busca a conta vinculada ao usuário logado
 $accountsModel = new Accounts();
 $account = $accountsModel->find('id_usuario', $currentUser->id);
 
@@ -73,10 +73,10 @@ if ($values->tipo == '0') {
     $account->saldo -= $values->valor;
 }
 
-// 9. Atualiza o saldo da conta no banco
+//  Atualiza o saldo da conta no banco
 $accountsModel->update($account, ['id' => $account->id]);
 
-// 10. Redireciona para a tela principal após sucesso
+//  Redireciona para a tela principal após sucesso
 if ($result) {
     header('Location: /cashflow');
     exit;
