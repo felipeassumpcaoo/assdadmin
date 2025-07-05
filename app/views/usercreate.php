@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title' => $title]) ?>
+<?php $this->layout('layout/master', ['title' => $title]) ?>
 
 <h1>Cadastrar Usuários</h1>
 

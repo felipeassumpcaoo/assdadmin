@@ -113,7 +113,7 @@ font-weight: 700;
 
 
 .extract{
-   width: 70%;
+   width: 90%;
 
     
 }
@@ -143,9 +143,9 @@ font-weight: 700;
     border-bottom:2px solid #d5d5d5;
     padding: 10px;
     text-align: left;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Inter", sans-serif;
     color:#151515;
-    font-weight: 500;
+    font-weight: 400;
     background-color: transparent;
 }
 
@@ -159,6 +159,19 @@ tbody tr:hover{
     background-color: rgb(191, 188, 188);
 }
 
+
+/* botões da ações*/
+
+.edit-color{
+  background-color: #0082A5;
+  border:  1px solid #0082A5;
+}
+
+.edit-color:hover{
+  background-color: transparent;
+  color: #0082A5;
+  border:  1px solid #0082A5;
+}
 
 
 

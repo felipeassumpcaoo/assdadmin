@@ -141,7 +141,7 @@ class AccountInfoController extends Controller
    public function delete()
    {
     
-  
+
 
     // Verifica autenticação
     Auth::checkToken();

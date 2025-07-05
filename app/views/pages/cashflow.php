@@ -68,7 +68,7 @@
                             <?php endif; ?>   
                         </td>
                          <td>
-                            <a href="/editrecord?id=<?= $item->id ?>"class="btn btn-sm btn-primary" title="Editar">
+                            <a href="/editrecord?id=<?= $item->id ?>"class="btn btn-sm btn-primary edit-color" title="Editar">
                             <i class="bi bi-pencil"></i></a>
                             
                            <a href="/deleterecord?id=<?= $item->id ?>" class="btn btn-sm btn-danger" title="Excluir"
