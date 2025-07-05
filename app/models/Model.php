@@ -58,18 +58,6 @@ abstract class Model {
     }
 
 
-    public function delete() 
-    {
-     // $sql = "delete from {$this->table} where $field = ?";
-     
-      //$delete = $this->connection->prepare($sql);
-      //$delete->bindValue(1, $value);
-      //$delete->execute();
-     
-      //return $delete->rowCount();
-   
-   }
-
       
     
 

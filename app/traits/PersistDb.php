@@ -6,6 +6,7 @@ namespace app\traits;
 
 use app\models\querybuilder\Insert;
 use app\models\querybuilder\Update;
+use app\models\querybuilder\Delete;
 
 trait PersistDb {
 
@@ -43,7 +44,20 @@ trait PersistDb {
     return $update->rowCount();
 }
 
+public function delete($where)
+{
+    $where = (array) $where;
 
+    $sql = (new Delete)->where($where)->sql($this->table);
+    $delete = $this->connection->prepare($sql);
+
+    $whereKey = array_keys($where)[0];
+    $params = ["where_{$whereKey}" => $where[$whereKey]];
+
+    $delete->execute($params);
+
+    return $delete->rowCount();
+}
 
   
 }

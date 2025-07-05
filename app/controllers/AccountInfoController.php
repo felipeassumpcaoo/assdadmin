@@ -124,8 +124,6 @@ class AccountInfoController extends Controller
    }
 
 
-
-
    public function edit()
    {
 
@@ -136,8 +134,66 @@ class AccountInfoController extends Controller
     public function update()
    {
 
-     $this->view('updaterecord', ['title' => 'Editar Registro']);
+     $this->view('updaterecord', ['title' => 'Atualizar Registro']);
    }
 
+
+   public function delete()
+   {
+    
+  
+
+    // Verifica autenticação
+    Auth::checkToken();
+    $currentUser = Auth::user();
+
+    // Pega o ID via GET
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    if (!$id) {
+        echo "ID inválido.";
+        return;
+    }
+
+    // Busca o lançamento
+    $historical = new Historical();
+    $record = $historical->find('id', $id);
+    if (!$record) {
+        echo "Lançamento não encontrado.";
+        return;
+    }
+
+    // Busca a conta do usuário logado
+    $accountsModel = new Accounts();
+    $account = $accountsModel->find('id_usuario', $currentUser->id);
+    if (!$account) {
+        echo "Conta não encontrada.";
+        return;
+    }
+
+    // Ajusta o saldo baseado no tipo
+    if ($record->tipo == '0') {
+        // Era uma entrada → precisa remover do saldo
+        $account->saldo -= $record->valor;
+    } else {
+        // Era uma despesa → devolve para o saldo
+        $account->saldo += $record->valor;
+    }
+
+    // Atualiza saldo no banco
+    $accountsModel->update($account, ['id' => $account->id]);
+
+    // Remove o lançamento
+    $result = $historical->delete(['id' => $id]);
+
+    // Redireciona para o fluxo de caixa
+    if ($result) {
+        header('Location: /cashflow');
+        exit;
+    } else {
+        echo "Erro ao excluir lançamento.";
+    }
+
+
+   }
 
 }

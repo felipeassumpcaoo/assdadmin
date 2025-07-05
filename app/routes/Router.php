@@ -45,6 +45,7 @@ class Router
                '/createrecord' => fn() => self::load('AccountInfoController', 'create'),
                '/cashflow' => fn() => self::load('AccountInfoController', 'index'),
                '/editrecord' => fn() => self::load('AccountInfoController', 'edit'),
+               '/deleterecord' => fn() => self::load('AccountInfoController', 'delete'),
               
                  
                
